@@ -21,7 +21,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btLogin.setOnClickListener {
             viewModel.login(null, null)
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, BottomSheetActivity::class.java)
             startActivity(intent)
         }
 

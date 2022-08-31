@@ -5,4 +5,7 @@
     <string name="password">Senha</string>
     <string name="login">Login</string>
     <string name="login_sufix_email">@gmail.com</string>
+    <string name="home">Home</string>
+    <string name="notification">Notificação</string>
+    <string name="profile">Perfil</string>
 </resources>
