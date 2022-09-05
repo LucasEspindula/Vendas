@@ -10,4 +10,12 @@
     <string name="woman">Mulher</string>
     <string name="other">Outro</string>
     <string name="save">Salvar</string>
+    <string name="account_responsible">account responsible</string>
+    <string name="account_value">account value</string>
+    <string name="name_account">name account</string>
+    <string name="debito">Débito</string>
+    <string name="credito">Crédito</string>
+    <string name="submit">submit</string>
+    <string name="register">Register</string>
+    <string name="clear_inputs">Limpar campos</string>
 </resources>

@@ -27,6 +27,11 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btRegister.setOnClickListener {
+            val intent  = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         viewModel.shouldShowError.observe(this) { shouldShow ->
             if (shouldShow){
                 Toast.makeText(
