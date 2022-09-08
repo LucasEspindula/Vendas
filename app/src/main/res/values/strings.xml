@@ -2,20 +2,23 @@
     <string name="app_name">Vendas</string>
 
     <string name="email">Email</string>
-    <string name="password">Senha</string>
+    <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="nome">Nome</string>
-    <string name="age">Idade</string>
-    <string name="man">Homem</string>
-    <string name="woman">Mulher</string>
-    <string name="other">Outro</string>
-    <string name="save">Salvar</string>
-    <string name="account_responsible">account responsible</string>
-    <string name="account_value">account value</string>
-    <string name="name_account">name account</string>
-    <string name="debito">Débito</string>
-    <string name="credito">Crédito</string>
-    <string name="submit">submit</string>
-    <string name="register">Register</string>
-    <string name="clear_inputs">Limpar campos</string>
+    <string name="name">Name</string>
+    <string name="age">Age</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+    <string name="other">Other</string>
+    <string name="save">Save</string>
+    <string name="account_responsible">Account responsible</string>
+    <string name="account_value">Account value</string>
+    <string name="name_account">Name account</string>
+    <string name="debit">Debit</string>
+    <string name="credit">Credit</string>
+    <string name="submit">Submit</string>
+    <string name="registerProfile">Register</string>
+    <string name="registerAccount">R/ Account</string>
+    <string name="clear_inputs">Clear fields</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

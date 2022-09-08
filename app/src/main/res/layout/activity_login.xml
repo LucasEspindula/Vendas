@@ -56,11 +56,21 @@
             app:layout_constraintTop_toBottomOf="@+id/ti_password" />
 
         <Button
-            android:id="@+id/bt_register"
+            android:id="@+id/bt_registerAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/register"
+            android:text="@string/registerAccount"
+            app:layout_constraintStart_toEndOf="@+id/bt_registerProfile"
+            app:layout_constraintEnd_toStartOf="@+id/bt_login"
+            app:layout_constraintTop_toBottomOf="@+id/ti_password" />
+
+        <Button
+            android:id="@+id/bt_registerProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/registerProfile"
             app:layout_constraintStart_toStartOf="@+id/ti_password"
             app:layout_constraintTop_toBottomOf="@+id/ti_password" />
 

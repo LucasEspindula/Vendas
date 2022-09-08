@@ -72,13 +72,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/debito" />
+                android:text="@string/debit" />
 
             <com.google.android.material.radiobutton.MaterialRadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/credito" />
+                android:text="@string/credit" />
         </RadioGroup>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -87,6 +87,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_check_24"
             android:layout_marginBottom="10dp"
+            app:backgroundTint="@color/purple_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
