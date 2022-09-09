@@ -5,5 +5,5 @@ data class Person(
     val age: String,
     val email: String,
     val password: String,
-    val gender: String
+    val option: String
 )

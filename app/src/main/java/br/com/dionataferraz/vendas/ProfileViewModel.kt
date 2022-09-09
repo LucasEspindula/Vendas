@@ -16,20 +16,20 @@ class ProfileViewModel : ViewModel() {
         age: String?,
         email: String?,
         password: String?,
-        gender: String?
+        option: String?
     ) {
         if (name.isNullOrBlank()) error.value = "O campo nome não pode ser vazio!"
         else if (email.isNullOrBlank()) error.value = "O campo email não pode ser vazio!"
         else if (password.isNullOrBlank()) error.value = "O campo senha não pode ser vazio!"
         else if (age.isNullOrBlank()) error.value = "O campo idade não pode ser vazio!"
-        else if (gender.isNullOrBlank()) error.value = "O campo gênero não pode ser vazio!"
+        else if (option.isNullOrBlank()) error.value = "O campo gênero não pode ser vazio!"
         else {
             val personCreated = Person(
                 name = name,
                 age = age,
                 email = email,
                 password = password,
-                gender = gender
+                option = option
             )
             person.value = personCreated
         }

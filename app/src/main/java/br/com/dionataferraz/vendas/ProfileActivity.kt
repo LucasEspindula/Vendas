@@ -45,18 +45,16 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         fun clearSharedPreferencesAndFields() {
-
-            binding.etName.text?.clear()
-            binding.etAge.text?.clear()
-            binding.etEmail.text?.clear()
-            binding.etPassword.text?.clear()
+            binding.etName.text = null
+            binding.etAge.text = null
+            binding.etEmail.text = null
+            binding.etPassword.text = null
             binding.rg.clearCheck()
 
             sharedPreferences.edit().clear().apply()
         }
 
         binding.btSave.setOnClickListener {
-
             val radioGroup: RadioGroup = binding.rg
             val radioButtonSelected: Int = radioGroup.checkedRadioButtonId
             val radioButton: RadioButton? = findViewById(radioButtonSelected)
@@ -76,7 +74,6 @@ class ProfileActivity : AppCompatActivity() {
             )
 
             viewModel.personLiveData.observe(this) { person ->
-
                 val edit = sharedPreferences.edit()
 
                 val personSave = adapter.toJson(person)
