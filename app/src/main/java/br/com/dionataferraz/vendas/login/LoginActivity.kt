@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.login
 
 import android.os.Bundle
 import android.widget.Toast
