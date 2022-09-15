@@ -1,8 +1,10 @@
 package br.com.dionataferraz.vendas.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.dionataferraz.vendas.HomeActivity
 import br.com.dionataferraz.vendas.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -19,7 +21,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(view)
 
         binding.btLogin.setOnClickListener {
-            viewModel.login(null, null)
+            viewModel.login(
+                binding.etEmail.text.toString(),
+                binding.etPassword.text.toString()
+            )
+        }
+
+        viewModel.shouldShowHome.observe(this) { shouldOpen ->
+            if (shouldOpen) {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         viewModel.shouldShowError.observe(this) { shouldShow ->
