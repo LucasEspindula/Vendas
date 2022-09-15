@@ -1,15 +1,13 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import br.com.dionataferraz.vendas.databinding.ActivityTestingProfileBinding
+import br.com.dionataferraz.vendas.R
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class TestingProfileActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityTestingProfileBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,16 +24,18 @@ class TestingProfileActivity : AppCompatActivity() {
             .build()
 
         val adapter = moshi
-            .adapter(Person::class.java)
+            .adapter(Profile::class.java)
 
-        findViewById<TextView>(R.id.test).apply {
-            val personFromSharedPreferences = sharedPreferences.getString("Person", null)
+        findViewById<TextView>(R.id.testTextViewProfile).apply {
             val personFromAdapter = adapter.fromJson(
-                personFromSharedPreferences
+                sharedPreferences.getString("Person", null)
             )
             if (personFromAdapter != null)
-                text = "   ${personFromAdapter.name} ${personFromAdapter.age} " +
-                        "${personFromAdapter.email} ${personFromAdapter.password} ${personFromAdapter.gender}"
+                text =  "${personFromAdapter.name} " +
+                        "${personFromAdapter.age} " +
+                        "${personFromAdapter.email} " +
+                        "${personFromAdapter.password} " +
+                        "${personFromAdapter.option}"
         }
     }
 }

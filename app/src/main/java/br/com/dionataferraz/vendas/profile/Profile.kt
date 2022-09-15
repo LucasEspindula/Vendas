@@ -1,6 +1,6 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.profile
 
-data class Person(
+data class Profile(
     val name: String,
     val age: String,
     val email: String,

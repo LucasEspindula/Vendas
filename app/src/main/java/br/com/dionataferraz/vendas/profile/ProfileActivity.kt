@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,12 +6,12 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.dionataferraz.vendas.R
 import br.com.dionataferraz.vendas.databinding.ActivityProfileBinding
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class ProfileActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityProfileBinding
     private lateinit var viewModel: ProfileViewModel
 
@@ -22,8 +22,7 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         viewModel = ProfileViewModel()
 
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         val sharedPreferences = getSharedPreferences(
             "Profile",
@@ -36,10 +35,11 @@ class ProfileActivity : AppCompatActivity() {
             .build()
 
         val adapter = moshi
-            .adapter(Person::class.java)
+            .adapter(Profile::class.java)
 
         fun callTestingProfileActivity() {
-            val intent = Intent(this, TestingProfileActivity::class.java)
+            val intent = Intent(this,
+                TestingProfileActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -57,13 +57,13 @@ class ProfileActivity : AppCompatActivity() {
         binding.btSave.setOnClickListener {
             val radioGroup: RadioGroup = binding.rg
             val radioButtonSelected: Int = radioGroup.checkedRadioButtonId
-            val radioButton: RadioButton? = findViewById(radioButtonSelected)
+            val radioButton: RadioButton = findViewById(radioButtonSelected)
 
             val name = binding.etName.text.toString()
             val age = binding.etAge.text.toString()
             val email = binding.etEmail.text.toString()
             val password = binding.etPassword.text.toString()
-            val option: String = radioButton?.text.toString()
+            val option: String = radioButton.text.toString()
 
             viewModel.createPerson(
                 name,

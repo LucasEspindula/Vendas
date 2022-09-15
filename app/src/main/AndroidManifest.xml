@@ -9,37 +9,37 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:parentActivityName="com.dionataferraz.vendas.LoginActivity"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vendas"
         tools:targetApi="31">
         <activity
-            android:name=".TestingAccountActivity"
+            android:name=".account.TestingAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".Account"
+            android:name=".account.Account"
             android:exported="false" />
         <activity
-            android:name=".AccountViewModel"
+            android:name=".account.AccountViewModel"
             android:exported="false" />
         <activity
-            android:name=".TestingProfileActivity"
+            android:name=".profile.TestingProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".Person"
+            android:name=".profile.Profile"
             android:exported="false" />
         <activity
-            android:name=".ProfileViewModel"
+            android:name=".profile.ProfileViewModel"
             android:exported="false" />
         <activity
-            android:name=".AccountActivity"
+            android:name=".account.AccountActivity"
+            android:parentActivityName=".login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".TransactionsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginActivity"
             android:exported="true" />
     </application>
 
