@@ -10,6 +10,15 @@
         android:orientation="vertical"
         tools:context=".login.LoginActivity">
 
+        <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo_epf_grande"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@id/ti_email"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_email"
             android:layout_width="match_parent"
@@ -48,31 +57,38 @@
 
         <Button
             android:id="@+id/bt_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text="@string/login"
-            app:layout_constraintEnd_toEndOf="@+id/ti_password"
             app:layout_constraintTop_toBottomOf="@+id/ti_password" />
 
-        <Button
-            android:id="@+id/bt_registerAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/registerAccount"
-            app:layout_constraintStart_toEndOf="@+id/bt_registerProfile"
-            app:layout_constraintEnd_toStartOf="@+id/bt_login"
-            app:layout_constraintTop_toBottomOf="@+id/ti_password" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-        <Button
-            android:id="@+id/bt_registerProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/registerProfile"
-            app:layout_constraintStart_toStartOf="@+id/ti_password"
-            app:layout_constraintTop_toBottomOf="@+id/ti_password" />
+
+
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_registerAccount"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="@string/registerAccount"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/bt_registerProfile"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/bt_login"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ti_password" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_registerProfile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:text="@string/registerProfile"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/ti_password"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ti_password" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

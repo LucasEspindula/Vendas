@@ -27,9 +27,11 @@ class TestingProfileActivity : AppCompatActivity() {
             .adapter(Profile::class.java)
 
         findViewById<TextView>(R.id.testTextViewProfile).apply {
-            val personFromAdapter = adapter.fromJson(
-                sharedPreferences.getString("Person", null)
-            )
+            val personFromAdapter = sharedPreferences.getString("Person", null)?.let {
+                adapter.fromJson(
+                    it
+                )
+            }
             if (personFromAdapter != null)
                 text =  "${personFromAdapter.name} " +
                         "${personFromAdapter.age} " +
