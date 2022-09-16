@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                 spannableString.setSpan(clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length,
                     Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             }
-            this.movementMethod = LinkMovementMethod.getInstance() // without LinkMovementMethod, link can not click
+            this.movementMethod = LinkMovementMethod.getInstance()
             this.setText(spannableString, TextView.BufferType.SPANNABLE)
         }
 
