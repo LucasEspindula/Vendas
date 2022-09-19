@@ -23,4 +23,8 @@
     <string name="account_responsible">Responsavel da conta</string>
     <string name="debit">Debito</string>
     <string name="credit">Credito</string>
+    <string name="value">Value</string>
+    <string name="icon">Icon</string>
+    <string name="Description">Description</string>
+    <string name="time">Time</string>
 </resources>

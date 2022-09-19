@@ -4,46 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import br.com.dionataferraz.vendas.databinding.ActivityTransactionsBinding
+import java.util.*
 
-class TransactionsActivity : AppCompatActivity(),TransactionAdapter.Listener {
+class TransactionsActivity : AppCompatActivity(), TransactionAdapter.Listener {
 
     private lateinit var binding: ActivityTransactionsBinding
+
     private val adapter: TransactionAdapter by lazy {
         TransactionAdapter(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityTransactionsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.button.setOnClickListener {
-            adapter.updateItem(
-                "MUDOU AQUI", 6
-            )
-/*            adapter.addNewList(
-                listOf(
-                    "Item 11",
-                    "Item 10",
-                    "Item 9"
-                )
-            )*/
-        }
 
         binding.rcList.adapter = adapter
         adapter.addList(
-            listOf(
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 7",
-                "Item 8",
-                "Item 9",
-                "Item 10",
-                "Item 11",
-            )
+            getTransactionList()
         )
     }
 
@@ -53,5 +32,28 @@ class TransactionsActivity : AppCompatActivity(),TransactionAdapter.Listener {
             text,
             Toast.LENGTH_LONG
         ).show()
+    }
+
+    private fun getTransactionList(): List<TransactionModel> {
+        return listOf(
+            TransactionModel(
+                date = Calendar.getInstance().time,
+                value = 10.90,
+                description = "Max super",
+                transactionType = TransactionType.MARKET
+            ),
+            TransactionModel(
+                date = Calendar.getInstance().time,
+                value = 15.10,
+                description = "Posto alvorada",
+                transactionType = TransactionType.GAS_STATION
+            ),
+            TransactionModel(
+                date = Calendar.getInstance().time,
+                value = 12.50,
+                description = "Garrison",
+                transactionType = TransactionType.PUB
+            )
+        )
     }
 }
