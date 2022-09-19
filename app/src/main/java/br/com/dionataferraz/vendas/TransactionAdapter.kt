@@ -27,6 +27,7 @@ class TransactionAdapter(private val listener: Listener) :
     override fun getItemCount(): Int {
         return listItem.size
     }
+
     fun addNewList(list: List<String>) {
         listItem.clear()
         notifyItemRangeRemoved(0, listItem.size)
@@ -40,7 +41,6 @@ class TransactionAdapter(private val listener: Listener) :
         listItem[position] = item
         notifyItemChanged(position)
     }
-
 }
 
 class TransactionViewHolder(
