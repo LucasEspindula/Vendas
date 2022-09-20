@@ -20,5 +20,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, AccountActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btListaTransacoes.setOnClickListener {
+            val intent = Intent(this, TransactionsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -63,7 +63,8 @@ class AccountActivity : AppCompatActivity() {
             )
         }
 
-        viewModel.accountLiveData.observe(this) { account ->
+        viewModel.accountLiveData.observe(this) {
+                account ->
             val edit = sharedPreferences.edit()
 
             val accountSave = adapter.toJson(account)

@@ -25,6 +25,7 @@
     <string name="credit">Credito</string>
     <string name="value">Value</string>
     <string name="icon">Icon</string>
-    <string name="Description">Description</string>
+    <string name="description">Description</string>
     <string name="time">Time</string>
+    <string name="home_lista_transacoes">Transações</string>
 </resources>
