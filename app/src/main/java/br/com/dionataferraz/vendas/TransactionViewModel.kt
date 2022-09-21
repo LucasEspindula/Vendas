@@ -17,19 +17,19 @@ class TransactionsViewModel : ViewModel() {
     private val transactionList = listOf(
         TransactionModel(
             value = 10.91,
-//            time = Date(2021, 12, 5, 10, 0),
+            time = Date(2021, 12, 5, 10, 12),
             description = "Max super",
             transactionType = TransactionType.MARKET
         ),
         TransactionModel(
             value = 15.13,
-//            time = Date(2021, 12, 5, 10, 0),
+            time = Date(2021, 12, 5, 10, 42),
             description = "Posto alvorada",
             transactionType = TransactionType.GAS_STATION
         ),
         TransactionModel(
             value = 12.55,
-//            time = Date(2021, 12, 5, 10, 0),
+            time = Date(2021, 12, 5, 10, 35),
             description = "Garrison",
             transactionType = TransactionType.PUB
         )

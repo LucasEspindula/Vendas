@@ -47,11 +47,9 @@ class TransactionViewHolder(
 
     fun bind(transactionModel: TransactionModel) {
 
-        val value = transactionModel.value
-        "R$ ${value.formats(2)}".also { binding.tvValue.text = it }
-
+        "R$ ${transactionModel.value.formats(2)}".also { binding.tvValue.text = it }
         binding.tvDescription.text = transactionModel.description
-//        binding.tvTime.text = transactionModel.time.hours.toString() + ":" + transactionModel.time.minutes.toString()
+        (transactionModel.time.hours.toString() + ":" + transactionModel.time.minutes.toString()).also { binding.tvTime.text = it }
 
         when (transactionModel.transactionType) {
             TransactionType.GAS_STATION -> binding.icon.setImageResource(R.drawable.ic_baseline_local_gas_station_24)

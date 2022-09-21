@@ -6,7 +6,7 @@ import java.util.*
 @JsonClass(generateAdapter = true)
 class TransactionModel(
     val value: Double,
-//    val time: Date,
+    val time: Date,
     val description: String,
     val transactionType: TransactionType
 )
