@@ -28,4 +28,7 @@
     <string name="description">Description</string>
     <string name="time">Time</string>
     <string name="home_lista_transacoes">Transações</string>
+    <string name="add_saldo">Adicionar saldo</string>
+    <string name="remover_saldo">Retirar saldo</string>
+    <string name="valor">Value</string>
 </resources>

@@ -7,31 +7,31 @@ import java.util.*
 
 class TransactionsViewModel : ViewModel() {
 
-    private val transactionModel: MutableLiveData<List<TransactionModel>> = MutableLiveData()
-    val transactionLiveData: LiveData<List<TransactionModel>> = transactionModel
+    private val transactionModel: MutableLiveData<List<__TransactionModel>> = MutableLiveData()
+    val transactionLiveData: LiveData<List<__TransactionModel>> = transactionModel
 
     fun callTransactionList() {
         transactionModel.value = transactionList
     }
 
     private val transactionList = listOf(
-        TransactionModel(
+        __TransactionModel(
             value = 10.91,
             time = Date(2021, 12, 5, 10, 12),
             description = "Max super",
-            transactionType = TransactionType.MARKET
+            transactionType = __TransactionType.MARKET
         ),
-        TransactionModel(
+        __TransactionModel(
             value = 15.13,
             time = Date(2021, 12, 5, 10, 42),
             description = "Posto alvorada",
-            transactionType = TransactionType.GAS_STATION
+            transactionType = __TransactionType.GAS_STATION
         ),
-        TransactionModel(
+        __TransactionModel(
             value = 12.55,
             time = Date(2021, 12, 5, 10, 35),
             description = "Garrison",
-            transactionType = TransactionType.PUB
+            transactionType = __TransactionType.PUB
         )
     )
 }

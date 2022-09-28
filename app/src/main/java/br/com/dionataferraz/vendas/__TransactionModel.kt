@@ -4,10 +4,10 @@ import com.squareup.moshi.JsonClass
 import java.util.*
 
 @JsonClass(generateAdapter = true)
-class TransactionModel(
+class __TransactionModel(
     val value: Double,
     val time: Date,
     val description: String,
-    val transactionType: TransactionType
+    val transactionType: __TransactionType
 )
 

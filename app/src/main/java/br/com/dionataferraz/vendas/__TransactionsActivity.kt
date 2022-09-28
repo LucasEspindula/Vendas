@@ -13,7 +13,7 @@ import java.lang.reflect.Type
 import java.util.*
 
 
-class TransactionsActivity : AppCompatActivity() {
+class __TransactionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTransactionsBinding
     private lateinit var viewModel: TransactionsViewModel
 
@@ -75,7 +75,7 @@ class TransactionsActivity : AppCompatActivity() {
         }
     }
 
-    private fun moshiAdapterFunc(): JsonAdapter<List<TransactionModel>> {
+    private fun moshiAdapterFunc(): JsonAdapter<List<__TransactionModel>> {
         val moshi = Moshi
             .Builder()
             .add(Date::class.java, Rfc3339DateJsonAdapter().nullSafe())
@@ -84,7 +84,7 @@ class TransactionsActivity : AppCompatActivity() {
 
         val listMyData: Type = Types.newParameterizedType(
             List::class.java,
-            TransactionModel::class.java
+            __TransactionModel::class.java
         )
 
         return moshi.adapter(listMyData)

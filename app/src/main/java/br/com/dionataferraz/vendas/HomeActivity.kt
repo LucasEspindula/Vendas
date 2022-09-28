@@ -22,7 +22,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btListaTransacoes.setOnClickListener {
-            val intent = Intent(this, TransactionsActivity::class.java)
+            val intent = Intent(this, __TransactionsActivity::class.java)
             startActivity(intent)
         }
     }
