@@ -92,6 +92,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_credit_card" />
 
         <Button
+            android:id="@+id/bt_nova_compra"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginTop="40dp"
@@ -102,6 +103,31 @@
             app:layout_constraintEnd_toEndOf="@+id/tv_credit_card_place_holder"
             app:layout_constraintStart_toStartOf="@+id/tv_credit_card_place_holder"
             app:layout_constraintTop_toBottomOf="@+id/tv_credit_card_place_holder" />
+
+        <Button
+            android:id="@+id/bt_nova_conta"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/purple_700"
+            android:text="@string/home_new_account"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintStart_toStartOf="@+id/tv_account_place_holder"
+            app:layout_constraintTop_toBottomOf="@+id/tv_account_place_holder"/>
+
+        <Button
+            android:id="@+id/bt_lista_transacoes"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@color/white"
+            android:text="@string/home_lista_transacoes"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintStart_toStartOf="@+id/bt_nova_compra"
+            app:layout_constraintTop_toBottomOf="@+id/bt_nova_compra"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

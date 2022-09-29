@@ -1,5 +1,6 @@
 package br.com.dionataferraz.vendas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.dionataferraz.vendas.databinding.ActivityHomeBinding
@@ -13,6 +14,16 @@ class HomeActivity : AppCompatActivity() {
         ActivityHomeBinding.inflate(layoutInflater).run {
             binding = this
             setContentView(root)
+        }
+
+        binding.btNovaConta.setOnClickListener {
+            val intent = Intent(this, AccountActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btListaTransacoes.setOnClickListener {
+            val intent = Intent(this, TransactionsActivity::class.java)
+            startActivity(intent)
         }
     }
 }

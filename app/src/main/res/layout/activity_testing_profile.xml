@@ -6,14 +6,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".TransactionsActivity">
+        tools:context=".profile.TestingProfileActivity">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_list"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/testTextViewProfile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_list" />
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
