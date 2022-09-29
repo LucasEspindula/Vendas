@@ -11,5 +11,5 @@ data class BalanceEntity(
     val id: Int = 0,
 //    val date: Date,
     val value: Double,
-    val typeDeposit: TypeDeposit?,
+    val typeDeposit: TypeDeposit,
 )

@@ -1,9 +1,9 @@
 package br.com.dionataferraz.vendas.balance.data.repository
 
-import br.com.dionataferraz.vendas.balance.data.local.BalanceDao
+import android.util.Log
 import br.com.dionataferraz.vendas.balance.data.local.BalanceEntity
 import br.com.dionataferraz.vendas.balance.data.local.LocalDataSource
-import br.com.dionataferraz.vendas.balance.data.local.TypeDeposit
+import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 
 class BalanceRepository() {
 
@@ -11,10 +11,19 @@ class BalanceRepository() {
         LocalDataSource()
     }
 
-    fun addBalance(value: Double, typeDeposit: TypeDeposit) {
-        dataSource.addBalance(
-            value,
-            typeDeposit
+    fun depositBalanceRepository(balanceModel: BalanceModel) {
+        dataSource.depositBalanceDataSource(
+            balanceModel
         )
+    }
+
+    fun withdrawBalanceRepository(balanceModel: BalanceModel) {
+        dataSource.withdrawBalanceDataSource(
+            balanceModel
+        )
+    }
+
+    fun fetchTransactions(): List<BalanceEntity> {
+        return dataSource.fetchTransactions()
     }
 }

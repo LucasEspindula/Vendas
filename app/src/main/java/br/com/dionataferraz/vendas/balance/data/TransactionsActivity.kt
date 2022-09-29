@@ -7,7 +7,7 @@ import br.com.dionataferraz.vendas.TransactionsViewModel
 import br.com.dionataferraz.vendas.databinding.ActivityTransactionsBinding
 
 
-class __TransactionsActivity : AppCompatActivity() {
+class TransactionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTransactionsBinding
     private lateinit var viewModel: TransactionsViewModel
 
@@ -22,7 +22,7 @@ class __TransactionsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = TransactionsViewModel()
-        viewModel.__CALLTEST()
+//        viewModel.__CALLTEST()
 
         viewModel.transactionLiveData.observe(this) { transaction ->
             adapterTransaction.addList(

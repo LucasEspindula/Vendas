@@ -1,6 +1,7 @@
 package br.com.dionataferraz.vendas.balance.data.local
 
-import java.util.*
+import android.util.Log
+import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 
 class LocalDataSource {
 
@@ -8,13 +9,33 @@ class LocalDataSource {
         VendasDatabase.getInstance()
     }
 
-    fun addBalance(value: Double, typeDeposit: TypeDeposit) {
+    fun depositBalanceDataSource(balanceModel: BalanceModel) {
         database.DAO().insertBalance(
-            BalanceEntity(
-                value = value,
-                typeDeposit = typeDeposit,
-//            date = Date()
-            )
+            balanceModel.mapModelToEntity()
         )
     }
+
+    fun withdrawBalanceDataSource(balanceModel: BalanceModel) {
+        database.DAO().removeBalance(
+            balanceModel.mapModelToEntity()
+        )
+    }
+
+    fun fetchTransactions(): List<BalanceEntity> {
+        return database.DAO().getTransactions()
+    }
+
+    private fun BalanceModel.mapModelToEntity(): BalanceEntity {
+        return BalanceEntity(
+            value = value,
+            typeDeposit = typeDeposit
+        )
+    }
+
+//    private fun BalanceEntity.mapEntityToModel(): BalanceModel {
+//        return BalanceModel(
+//            value = value,
+//            typeDeposit = typeDeposit
+//        )
+//    }
 }
