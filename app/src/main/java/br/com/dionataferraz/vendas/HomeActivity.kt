@@ -3,6 +3,9 @@ package br.com.dionataferraz.vendas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
+import br.com.dionataferraz.vendas.balance.data.__TransactionsActivity
+import br.com.dionataferraz.vendas.balance.data.local.BalanceActivity
 import br.com.dionataferraz.vendas.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -22,8 +25,16 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btListaTransacoes.setOnClickListener {
+            val intent = Intent(this, BalanceActivity::class.java)
+            startActivity(intent)
+        }
+
+        val makeBalanceClickable: TextView = findViewById(R.id.tv_account_balance)
+        makeBalanceClickable.setOnClickListener {
             val intent = Intent(this, __TransactionsActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 }

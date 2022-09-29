@@ -1,13 +1,12 @@
 package br.com.dionataferraz.vendas.balance.data.local
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.dionataferraz.vendas.balance.data.repository.BalanceRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class BalanceViewModel(application: Application): AndroidViewModel(application) {
+class BalanceViewModel: ViewModel() {
 
     private val repository: BalanceRepository
 
@@ -18,7 +17,7 @@ class BalanceViewModel(application: Application): AndroidViewModel(application) 
 
     fun addBalance(balanceEntity: BalanceEntity) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addBalance(balanceEntity)
+            repository.addBalance()
         }
     }
 }

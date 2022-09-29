@@ -36,7 +36,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/home_hello" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_account_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -125,8 +125,9 @@
             android:text="@string/home_lista_transacoes"
             android:textAllCaps="false"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintStart_toStartOf="@+id/bt_nova_compra"
-            app:layout_constraintTop_toBottomOf="@+id/bt_nova_compra" />
+            app:layout_constraintStart_toStartOf="@+id/bt_nova_conta"
+            app:layout_constraintEnd_toEndOf="@+id/bt_nova_conta"
+            app:layout_constraintTop_toBottomOf="@+id/bt_nova_conta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
