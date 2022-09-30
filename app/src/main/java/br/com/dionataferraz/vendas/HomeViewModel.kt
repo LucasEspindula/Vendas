@@ -7,7 +7,7 @@ import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 import br.com.dionataferraz.vendas.balance.domain.usecase.BalanceUsecase
 import kotlinx.coroutines.launch
 
-class TransactionsViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val transactionModel: MutableLiveData<List<BalanceModel>> = MutableLiveData()
     val transactionLiveData: MutableLiveData<List<BalanceModel>> = transactionModel
@@ -16,7 +16,7 @@ class TransactionsViewModel : ViewModel() {
         BalanceUsecase()
     }
 
-    fun callTransactions() {
+    fun attBalance() {
         viewModelScope.launch {
             transactionModel.value = usecase.fetchTransactions()
         }

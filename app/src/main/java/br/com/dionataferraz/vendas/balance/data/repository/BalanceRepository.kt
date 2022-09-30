@@ -1,7 +1,5 @@
 package br.com.dionataferraz.vendas.balance.data.repository
 
-import android.util.Log
-import br.com.dionataferraz.vendas.balance.data.local.BalanceEntity
 import br.com.dionataferraz.vendas.balance.data.local.LocalDataSource
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 
@@ -11,19 +9,19 @@ class BalanceRepository() {
         LocalDataSource()
     }
 
-    fun depositBalanceRepository(balanceModel: BalanceModel) {
+    suspend fun depositBalanceRepository(balanceModel: BalanceModel) {
         dataSource.depositBalanceDataSource(
             balanceModel
         )
     }
 
-    fun withdrawBalanceRepository(balanceModel: BalanceModel) {
+    suspend fun withdrawBalanceRepository(balanceModel: BalanceModel) {
         dataSource.withdrawBalanceDataSource(
             balanceModel
         )
     }
 
-    fun fetchTransactions(): List<BalanceEntity> {
+    suspend fun fetchTransactions(): List<BalanceModel> {
         return dataSource.fetchTransactions()
     }
 }

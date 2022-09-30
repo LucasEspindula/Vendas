@@ -1,11 +1,11 @@
 package br.com.dionataferraz.vendas.balance.data
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import br.com.dionataferraz.vendas.TransactionAdapter
 import br.com.dionataferraz.vendas.TransactionsViewModel
 import br.com.dionataferraz.vendas.databinding.ActivityTransactionsBinding
-
 
 class TransactionsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTransactionsBinding
@@ -22,9 +22,13 @@ class TransactionsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = TransactionsViewModel()
-//        viewModel.__CALLTEST()
+        viewModel.callTransactions()
 
         viewModel.transactionLiveData.observe(this) { transaction ->
+            Log.e("ACTIVITY ::::: ", transaction.toString())
+
+            binding.rcList.adapter = adapterTransaction
+
             adapterTransaction.addList(
                 transaction
             )

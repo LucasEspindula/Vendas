@@ -1,7 +1,6 @@
 package br.com.dionataferraz.vendas.balance.domain.usecase
 
 import android.util.Log
-import br.com.dionataferraz.vendas.balance.data.local.BalanceEntity
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 import br.com.dionataferraz.vendas.balance.data.repository.BalanceRepository
 
@@ -11,19 +10,20 @@ class BalanceUsecase {
         BalanceRepository()
     }
 
-    fun depositBalanceUseCase(balanceModel: BalanceModel) {
+    suspend fun depositBalanceUseCase(balanceModel: BalanceModel) {
         repository.depositBalanceRepository(
             balanceModel
         )
+        Log.e("USERCASE ::::: ", balanceModel.toString())
     }
 
-    fun withdrawBalanceUseCase(balanceModel: BalanceModel) {
+    suspend fun withdrawBalanceUseCase(balanceModel: BalanceModel) {
         repository.withdrawBalanceRepository(
             balanceModel
         )
     }
 
-    fun fetchTransactions(): List<BalanceEntity> {
+    suspend fun fetchTransactions(): List<BalanceModel> {
         return repository.fetchTransactions()
     }
 }

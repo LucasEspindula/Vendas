@@ -7,7 +7,7 @@ import java.util.*
 @Entity(tableName = "balanceTable")
 data class BalanceEntity(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 //    val date: Date,
     val value: Double,
