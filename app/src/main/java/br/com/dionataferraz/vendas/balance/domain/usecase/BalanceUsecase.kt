@@ -14,13 +14,14 @@ class BalanceUsecase {
         repository.depositBalanceRepository(
             balanceModel
         )
-        Log.e("USERCASE ::::: ", balanceModel.toString())
+        Log.e("DEPOSITO ::::: ", balanceModel.toString())
     }
 
     suspend fun withdrawBalanceUseCase(balanceModel: BalanceModel) {
         repository.withdrawBalanceRepository(
             balanceModel
         )
+        Log.e("RETIRADA ::::: ", balanceModel.toString())
     }
 
     suspend fun fetchTransactions(): List<BalanceModel> {

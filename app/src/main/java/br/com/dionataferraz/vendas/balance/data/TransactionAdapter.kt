@@ -1,5 +1,11 @@
 package br.com.dionataferraz.vendas
 
+import android.graphics.Color
+import android.graphics.Typeface
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +14,8 @@ import br.com.dionataferraz.vendas.balance.data.local.BalanceEntity
 import br.com.dionataferraz.vendas.balance.data.local.TypeDeposit
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 import br.com.dionataferraz.vendas.databinding.ItemListBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class TransactionAdapter : RecyclerView.Adapter<TransactionViewHolder>() {
 
@@ -47,17 +55,27 @@ class TransactionViewHolder(
     private val binding: ItemListBinding
 ) : RecyclerView.ViewHolder(binding.root) {
 
+    fun bind(balanceModel: BalanceModel) {
+        getFormatedDate(balanceModel.date).also { binding.tvDate.text = it }
+        balanceModel.nameTypeBalance.also { binding.tvNameTypeDeposit.text = it }
+
+        when (balanceModel.typeDeposit) {
+            TypeDeposit.Deposit -> {
+                binding.icon.setImageResource(R.drawable.ic_baseline_attach_money_24)
+                "+ R$ ${balanceModel.value.formats(2)}".also { binding.tvValue.text = it }
+            }
+
+            TypeDeposit.Withdraw -> {
+                binding.icon.setImageResource(R.drawable.ic_baseline_money_off_24)
+                "- R$ ${balanceModel.value.formats(2)}".also { binding.tvValue.text = it }
+            }
+        }
+    }
+
     private fun Double.formats(scale: Int) = "%.${scale}f".format(this)
 
-    fun bind(transactionModel: BalanceModel) {
-
-        "R$ ${transactionModel.value.formats(2)}".also { binding.tvValue.text = it }
-//        binding.tvDescription.text = transactionModel.description
-//        (transactionModel.time.hours.toString() + ":" + transactionModel.time.minutes.toString()).also { binding.tvTime.text = it }
-//
-        when (transactionModel.typeDeposit) {
-            TypeDeposit.Withdraw -> binding.icon.setImageResource(R.drawable.ic_baseline_money_off_24)
-            TypeDeposit.Deposit -> binding.icon.setImageResource(R.drawable.ic_baseline_attach_money_24)
-        }
+    private fun getFormatedDate(date: Date): String {
+        val formatter = Locale("pt", "BR")
+        return SimpleDateFormat("dd MMM yyyy HH:mm", formatter).format(date)
     }
 }

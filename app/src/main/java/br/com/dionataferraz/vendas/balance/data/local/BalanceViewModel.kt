@@ -6,6 +6,7 @@ import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 import br.com.dionataferraz.vendas.balance.domain.usecase.BalanceUsecase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class BalanceViewModel : ViewModel() {
 
@@ -18,6 +19,8 @@ class BalanceViewModel : ViewModel() {
             usecase.depositBalanceUseCase(
                 BalanceModel(
                     value = value.toDouble(),
+                    date = Date(),
+                    nameTypeBalance = "Depósito",
                     typeDeposit = TypeDeposit.Deposit
                 )
             )
@@ -29,6 +32,8 @@ class BalanceViewModel : ViewModel() {
             usecase.withdrawBalanceUseCase(
                 BalanceModel(
                     value = value.toDouble(),
+                    date = Date(),
+                    nameTypeBalance = "Dinheiro resgatado",
                     typeDeposit = TypeDeposit.Withdraw
                 )
             )

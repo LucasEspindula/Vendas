@@ -26,9 +26,10 @@
     <string name="value">Value</string>
     <string name="icon">Icon</string>
     <string name="description">Description</string>
-    <string name="time">Time</string>
+    <string name="data_transações">Data da transação</string>
     <string name="home_new_transacoes">Nova Transação</string>
     <string name="add_saldo">Adicionar saldo</string>
     <string name="remover_saldo">Retirar saldo</string>
     <string name="valor">Value</string>
+    <string name="name_type_deposit">Nome tipo de deposito</string>
 </resources>

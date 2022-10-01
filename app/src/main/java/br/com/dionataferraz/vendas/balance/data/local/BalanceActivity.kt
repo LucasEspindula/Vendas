@@ -21,14 +21,13 @@ class BalanceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBalanceBinding.inflate(layoutInflater)
-        viewModel = BalanceViewModel()
+        setContentView(binding.root)
 
-        val view = binding.root
-        setContentView(view)
+        viewModel = BalanceViewModel()
 
         binding.btDeposit.setOnClickListener {
             viewModel.depositBalanceViewModel(
-                binding.etValue.text.toString()
+                binding.etValue.text.toString(),
             )
         }
 

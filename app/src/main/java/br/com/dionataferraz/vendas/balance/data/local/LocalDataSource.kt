@@ -3,6 +3,7 @@ package br.com.dionataferraz.vendas.balance.data.local
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class LocalDataSource {
 
@@ -20,9 +21,7 @@ class LocalDataSource {
 
     suspend fun withdrawBalanceDataSource(balanceModel: BalanceModel) {
         withContext(Dispatchers.IO) {
-            database.DAO().removeBalance(
-                balanceModel.mapModelToEntity()
-            )
+            database.DAO().removeBalance()
         }
     }
 
@@ -35,14 +34,9 @@ class LocalDataSource {
     private fun BalanceModel.mapModelToEntity(): BalanceEntity {
         return BalanceEntity(
             value = value,
+            date = date,
+            nameTypeBalance = nameTypeBalance,
             typeDeposit = typeDeposit
         )
     }
-
-//    private fun BalanceEntity.mapEntityToModel(): BalanceModel {
-//        return BalanceModel(
-//            value = value,
-//            typeDeposit = typeDeposit
-//        )
-//    }
 }
