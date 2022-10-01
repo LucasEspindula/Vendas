@@ -7,11 +7,11 @@ import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 interface BalanceDao {
 
     @Insert()
-    fun insertBalance(balanceEntity: BalanceEntity)
-
-    @Query("DELETE FROM balanceTable WHERE id = :id")
-    fun removeBalance(id: Int)
+    fun insertTypeTransaction(balanceEntity: BalanceEntity)
 
     @Query("SELECT * from balanceTable")
     fun getTransactions(): List<BalanceModel>
+
+    @Query("SELECT SUM(value) AS balance FROM balanceTable")
+    fun getBalance(): Double
 }

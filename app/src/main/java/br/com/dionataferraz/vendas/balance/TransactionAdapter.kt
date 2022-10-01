@@ -1,16 +1,9 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.balance
 
-import android.graphics.Color
-import android.graphics.Typeface
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
-import android.text.style.StyleSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.dionataferraz.vendas.balance.data.local.BalanceEntity
+import br.com.dionataferraz.vendas.R
 import br.com.dionataferraz.vendas.balance.data.local.TypeDeposit
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 import br.com.dionataferraz.vendas.databinding.ItemListBinding
@@ -58,24 +51,16 @@ class TransactionViewHolder(
     fun bind(balanceModel: BalanceModel) {
         getFormatedDate(balanceModel.date).also { binding.tvDate.text = it }
         balanceModel.nameTypeBalance.also { binding.tvNameTypeDeposit.text = it }
+        "R$ ${balanceModel.value.formats(2)}".also { binding.tvValue.text = it }
 
         when (balanceModel.typeDeposit) {
-            TypeDeposit.Deposit -> {
-                binding.icon.setImageResource(R.drawable.ic_baseline_attach_money_24)
-                "+ R$ ${balanceModel.value.formats(2)}".also { binding.tvValue.text = it }
-            }
-
-            TypeDeposit.Withdraw -> {
-                binding.icon.setImageResource(R.drawable.ic_baseline_money_off_24)
-                "- R$ ${balanceModel.value.formats(2)}".also { binding.tvValue.text = it }
-            }
+            TypeDeposit.Deposit -> binding.icon.setImageResource(R.drawable.ic_baseline_attach_money_24)
+            TypeDeposit.Withdraw -> binding.icon.setImageResource(R.drawable.ic_baseline_money_off_24)
         }
     }
 
     private fun Double.formats(scale: Int) = "%.${scale}f".format(this)
 
-    private fun getFormatedDate(date: Date): String {
-        val formatter = Locale("pt", "BR")
-        return SimpleDateFormat("dd MMM yyyy HH:mm", formatter).format(date)
-    }
+    private fun getFormatedDate(date: Date): String =
+        SimpleDateFormat("dd MMM yyyy HH:mm", Locale("pt", "BR")).format(date)
 }

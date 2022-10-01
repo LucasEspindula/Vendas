@@ -1,5 +1,7 @@
 package br.com.dionataferraz.vendas.balance.data.local
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
@@ -10,13 +12,16 @@ import java.util.*
 
 class BalanceViewModel : ViewModel() {
 
+    private val errorLiveData: MutableLiveData<String> = MutableLiveData()
+    val shouldShowError: LiveData<String> = errorLiveData
+
     private val usecase by lazy {
         BalanceUsecase()
     }
 
     fun depositBalanceViewModel(value: String) {
         viewModelScope.launch {
-            usecase.depositBalanceUseCase(
+            usecase.typeBalanceUseCase(
                 BalanceModel(
                     value = value.toDouble(),
                     date = Date(),
@@ -29,14 +34,18 @@ class BalanceViewModel : ViewModel() {
 
     fun withdrawBalanceViewModel(value: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            usecase.withdrawBalanceUseCase(
-                BalanceModel(
-                    value = value.toDouble(),
-                    date = Date(),
-                    nameTypeBalance = "Dinheiro resgatado",
-                    typeDeposit = TypeDeposit.Withdraw
+            if (value.toDouble() > usecase.fetchBalanceUseCase()) {
+                errorLiveData.postValue("Valor maior que seu saldo")
+            } else {
+                usecase.typeBalanceUseCase(
+                    BalanceModel(
+                        value = value.toDouble() * -1,
+                        date = Date(),
+                        nameTypeBalance = "Dinheiro resgatado",
+                        typeDeposit = TypeDeposit.Withdraw
+                    )
                 )
-            )
+            }
         }
     }
 }

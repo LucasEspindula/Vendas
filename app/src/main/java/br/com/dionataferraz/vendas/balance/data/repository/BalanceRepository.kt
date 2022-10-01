@@ -9,19 +9,17 @@ class BalanceRepository() {
         LocalDataSource()
     }
 
-    suspend fun depositBalanceRepository(balanceModel: BalanceModel) {
-        dataSource.depositBalanceDataSource(
+    suspend fun typeBalanceRepository(balanceModel: BalanceModel) {
+        dataSource.typeBalanceDataSource(
             balanceModel
         )
     }
 
-    suspend fun withdrawBalanceRepository(balanceModel: BalanceModel) {
-        dataSource.withdrawBalanceDataSource(
-            balanceModel
-        )
+    suspend fun fetchTransactionsRepository(): List<BalanceModel> {
+        return dataSource.fetchTransactionsDataSource()
     }
 
-    suspend fun fetchTransactions(): List<BalanceModel> {
-        return dataSource.fetchTransactions()
+    suspend fun fetchBalanceRepository(): Double {
+        return dataSource.fetchBalanceDataSource()
     }
 }

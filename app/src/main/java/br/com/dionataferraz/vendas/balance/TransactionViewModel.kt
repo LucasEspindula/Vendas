@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.balance
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,7 +18,7 @@ class TransactionsViewModel : ViewModel() {
 
     fun callTransactions() {
         viewModelScope.launch {
-            transactionModel.value = usecase.fetchTransactions()
+            transactionModel.value = usecase.fetchTransactionsUseCase()
         }
     }
 }

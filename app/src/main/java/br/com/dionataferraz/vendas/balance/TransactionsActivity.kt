@@ -1,10 +1,7 @@
-package br.com.dionataferraz.vendas.balance.data
+package br.com.dionataferraz.vendas.balance
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import br.com.dionataferraz.vendas.TransactionAdapter
-import br.com.dionataferraz.vendas.TransactionsViewModel
 import br.com.dionataferraz.vendas.databinding.ActivityTransactionsBinding
 
 class TransactionsActivity : AppCompatActivity() {
@@ -25,7 +22,6 @@ class TransactionsActivity : AppCompatActivity() {
         viewModel.callTransactions()
 
         viewModel.transactionLiveData.observe(this) { transaction ->
-            Log.e("ACTIVITY ::::: ", transaction.toString())
 
             binding.rcList.adapter = adapterTransaction
 

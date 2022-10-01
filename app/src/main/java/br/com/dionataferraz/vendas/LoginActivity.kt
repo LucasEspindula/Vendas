@@ -24,8 +24,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         viewModel = LoginViewModel()
 
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
         binding.btLogin.setOnClickListener {
             viewModel.login(null, null)
