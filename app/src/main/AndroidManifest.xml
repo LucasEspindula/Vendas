@@ -9,15 +9,29 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Vendas"
         tools:targetApi="31">
         <activity
+            android:name=".balance.data.local.BalanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestingProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TestingAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AccountActivity"
+            android:exported="false"
+            android:parentActivityName=".HomeActivity" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".TransactionsActivity"
+            android:name=".balance.TransactionsActivity"
             android:exported="false" />
         <activity
             android:name=".ProfileActivity"
