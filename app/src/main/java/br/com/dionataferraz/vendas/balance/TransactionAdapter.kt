@@ -54,8 +54,8 @@ class TransactionViewHolder(
         "R$ ${balanceModel.value.formats(2)}".also { binding.tvValue.text = it }
 
         when (balanceModel.typeDeposit) {
-            TypeDeposit.Deposit -> binding.icon.setImageResource(R.drawable.ic_baseline_attach_money_24)
-            TypeDeposit.Withdraw -> binding.icon.setImageResource(R.drawable.ic_baseline_money_off_24)
+            TypeDeposit.DEPOSIT -> binding.icon.setImageResource(R.drawable.ic_baseline_attach_money_24)
+            TypeDeposit.WITHDRAW -> binding.icon.setImageResource(R.drawable.ic_baseline_money_off_24)
         }
     }
 

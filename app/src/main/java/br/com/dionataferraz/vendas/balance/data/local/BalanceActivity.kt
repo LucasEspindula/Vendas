@@ -3,6 +3,7 @@ package br.com.dionataferraz.vendas.balance.data.local
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import br.com.dionataferraz.vendas.database.VendasDatabase
 import br.com.dionataferraz.vendas.databinding.ActivityBalanceBinding
 
 class BalanceActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,12 +12,19 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.dionataferraz.vendas.HomeActivity
+import br.com.dionataferraz.vendas.ProfileActivity
+import br.com.dionataferraz.vendas.database.VendasDatabase
 import br.com.dionataferraz.vendas.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
+
+    private val database: VendasDatabase by lazy {
+        VendasDatabase.getInstance()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +34,27 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btLogin.setOnClickListener {
-            viewModel.login(null, null)
-            val intent  = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
+            viewModel.login(
+                binding.etEmail.text.toString(),
+                binding.etPassword.text.toString()
+            )
+        }
+
+        viewModel.shouldShowHome.observe(this) { shouldOpen ->
+            if (shouldOpen) {
+                val intent  = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        viewModel.shouldShowError.observe(this) { shouldShow ->
+            if (shouldShow) {
+                Toast.makeText(
+                    this,
+                    "Deu ruim",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
         fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>) {
@@ -43,28 +68,21 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
                 val startIndexOfLink = this.text.toString().indexOf(link.first)
-                spannableString.setSpan(clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length,
-                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannableString.setSpan(
+                    clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length,
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
             }
             this.movementMethod = LinkMovementMethod.getInstance()
             this.setText(spannableString, TextView.BufferType.SPANNABLE)
         }
 
         binding.btRegistro.makeLinks(
-            Pair("Registrar", View.OnClickListener {
-                val intent  = Intent(this, ProfileActivity::class.java)
-                startActivity(intent)
-            })
+                Pair("Registrar", View.OnClickListener {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                }
+            )
         )
-
-        viewModel.shouldShowError.observe(this) { shouldShow ->
-            if (shouldShow){
-                Toast.makeText(
-                    this,
-                    "Deu ruim",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        }
     }
 }

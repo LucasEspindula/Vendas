@@ -1,10 +1,11 @@
 package br.com.dionataferraz.vendas.balance.data.local
 
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
+import br.com.dionataferraz.vendas.database.VendasDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class LocalDataSource {
+class BalanceLocalDataSource {
 
     private val database by lazy {
         VendasDatabase.getInstance()
@@ -12,7 +13,7 @@ class LocalDataSource {
 
     suspend fun typeBalanceDataSource(balanceModel: BalanceModel) {
         withContext(Dispatchers.IO) {
-            database.DAO().insertTypeTransaction(
+            database.balanceDAO().insertTypeTransaction(
                 balanceModel.mapModelToEntity()
             )
         }
@@ -20,13 +21,13 @@ class LocalDataSource {
 
     suspend fun fetchTransactionsDataSource(): List<BalanceModel> {
         return withContext(Dispatchers.IO) {
-            database.DAO().getTransactions()
+            database.balanceDAO().getTransactions()
         }
     }
 
     suspend fun fetchBalanceDataSource(): Double {
         return withContext(Dispatchers.IO) {
-            database.DAO().getBalance()
+            database.balanceDAO().getBalance()
         }
     }
 

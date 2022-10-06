@@ -1,12 +1,12 @@
 package br.com.dionataferraz.vendas.balance.data.repository
 
-import br.com.dionataferraz.vendas.balance.data.local.LocalDataSource
+import br.com.dionataferraz.vendas.balance.data.local.BalanceLocalDataSource
 import br.com.dionataferraz.vendas.balance.data.model.BalanceModel
 
 class BalanceRepository() {
 
     private val dataSource by lazy {
-        LocalDataSource()
+        BalanceLocalDataSource()
     }
 
     suspend fun typeBalanceRepository(balanceModel: BalanceModel) {

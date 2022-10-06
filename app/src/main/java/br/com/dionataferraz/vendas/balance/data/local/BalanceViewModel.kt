@@ -26,7 +26,7 @@ class BalanceViewModel : ViewModel() {
                     value = value.toDouble(),
                     date = Date(),
                     nameTypeBalance = "Depósito",
-                    typeDeposit = TypeDeposit.Deposit
+                    typeDeposit = TypeDeposit.DEPOSIT
                 )
             )
         }
@@ -42,7 +42,7 @@ class BalanceViewModel : ViewModel() {
                         value = value.toDouble() * -1,
                         date = Date(),
                         nameTypeBalance = "Dinheiro resgatado",
-                        typeDeposit = TypeDeposit.Withdraw
+                        typeDeposit = TypeDeposit.WITHDRAW
                     )
                 )
             }
