@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.account
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import br.com.dionataferraz.vendas.R
 import br.com.dionataferraz.vendas.databinding.ActivityAccountBinding
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -40,7 +41,7 @@ class AccountActivity : AppCompatActivity() {
             .adapter(AccountModel::class.java)
 
         fun callTestingAccountActivity() {
-            val intent = Intent(this,TestingAccountActivity::class.java)
+            val intent = Intent(this, TestingAccountActivity::class.java)
             startActivity(intent)
             finish()
         }

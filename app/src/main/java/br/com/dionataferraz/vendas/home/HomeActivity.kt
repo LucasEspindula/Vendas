@@ -1,8 +1,9 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import br.com.dionataferraz.vendas.account.AccountActivity
 import br.com.dionataferraz.vendas.balance.TransactionsActivity
 import br.com.dionataferraz.vendas.balance.data.local.BalanceActivity
 import br.com.dionataferraz.vendas.databinding.ActivityHomeBinding

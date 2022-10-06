@@ -10,12 +10,14 @@ import br.com.dionataferraz.vendas.balance.data.local.BalanceEntity
 import br.com.dionataferraz.vendas.balance.data.local.DateConverter
 import br.com.dionataferraz.vendas.login.data.local.UserDao
 import br.com.dionataferraz.vendas.login.data.local.UserEntity
+import br.com.dionataferraz.vendas.splash.data.local.SplashDao
 
 @Database(entities = [BalanceEntity::class, UserEntity::class], version = 1)
 @TypeConverters(DateConverter::class)
 abstract class VendasDatabase : RoomDatabase() {
 
     abstract fun balanceDAO(): BalanceDao
+    abstract fun splashDAO(): SplashDao
     abstract fun loginDAO(): UserDao
 
     companion object {

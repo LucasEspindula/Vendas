@@ -12,8 +12,8 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import br.com.dionataferraz.vendas.HomeActivity
-import br.com.dionataferraz.vendas.ProfileActivity
+import br.com.dionataferraz.vendas.home.HomeActivity
+import br.com.dionataferraz.vendas.profile.ProfileActivity
 import br.com.dionataferraz.vendas.database.VendasDatabase
 import br.com.dionataferraz.vendas.databinding.ActivityLoginBinding
 
@@ -21,10 +21,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
-
-    private val database: VendasDatabase by lazy {
-        VendasDatabase.getInstance()
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

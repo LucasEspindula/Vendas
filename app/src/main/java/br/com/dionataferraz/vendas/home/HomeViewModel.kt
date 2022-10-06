@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

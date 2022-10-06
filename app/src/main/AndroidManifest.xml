@@ -20,26 +20,26 @@
             android:name=".balance.data.local.BalanceActivity"
             android:exported="false" />
         <activity
-            android:name=".TestingProfileActivity"
+            android:name=".profile.TestingProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".TestingAccountActivity"
+            android:name=".account.TestingAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".AccountActivity"
+            android:name=".account.AccountActivity"
             android:exported="false"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".home.HomeActivity" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".balance.TransactionsActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>

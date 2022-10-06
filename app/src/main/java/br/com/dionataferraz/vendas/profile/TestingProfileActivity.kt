@@ -1,9 +1,8 @@
-package br.com.dionataferraz.vendas
+package br.com.dionataferraz.vendas.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import br.com.dionataferraz.vendas.ProfileModel
 import br.com.dionataferraz.vendas.R
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
