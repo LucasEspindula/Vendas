@@ -1,7 +1,7 @@
 package br.com.dionataferraz.vendas.splash.data.local
 
 import br.com.dionataferraz.vendas.database.VendasDatabase
-import br.com.dionataferraz.vendas.login.data.model.UserModel
+import br.com.dionataferraz.vendas.model.UserModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

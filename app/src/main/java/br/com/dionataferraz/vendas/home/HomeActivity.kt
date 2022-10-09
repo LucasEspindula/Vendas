@@ -4,8 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.dionataferraz.vendas.account.AccountActivity
-import br.com.dionataferraz.vendas.balance.TransactionsActivity
-import br.com.dionataferraz.vendas.balance.data.local.BalanceActivity
+import br.com.dionataferraz.vendas.balance.TransactionsListActivity
+import br.com.dionataferraz.vendas.balance.data.local.TransactionActivity
 import br.com.dionataferraz.vendas.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
@@ -19,10 +19,15 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = HomeViewModel()
-        viewModel.attBalance()
 
-        viewModel.homeLiveData.observe(this) { balance ->
-            balance.toString().also { binding.tvAccountBalance.text = it }
+        viewModel.attNameHome()
+        viewModel.homeNameLiveData.observe(this) { attNameHome ->
+             binding.tvNameAccount.text = attNameHome
+        }
+
+        viewModel.attBalanceHome()
+        viewModel.homeBalanceLiveData.observe(this) { attBalanceHome ->
+            binding.tvAccountBalance.text = attBalanceHome
         }
 
         binding.btNovaConta.setOnClickListener {
@@ -32,14 +37,14 @@ class HomeActivity : AppCompatActivity() {
         }
 
         binding.btListaTransacoes.setOnClickListener {
-            Intent(this, BalanceActivity::class.java).also {
+            Intent(this, TransactionActivity::class.java).also {
                 startActivity(it)
             }
             recreate()
         }
 
         binding.tvAccountBalance.setOnClickListener {
-            Intent(this, TransactionsActivity::class.java).also {
+            Intent(this, TransactionsListActivity::class.java).also {
                 startActivity(it)
             }
             recreate()

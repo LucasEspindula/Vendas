@@ -1,9 +1,10 @@
 package br.com.dionataferraz.vendas.login.domain.usecase
 
-import br.com.dionataferraz.vendas.login.data.model.UserModel
-import br.com.dionataferraz.vendas.login.data.remote.ErrorModel
-import br.com.dionataferraz.vendas.login.data.remote.Result
+import br.com.dionataferraz.vendas.model.UserModel
+import br.com.dionataferraz.vendas.model.ErrorModel
+import br.com.dionataferraz.vendas.model.ResultModel
 import br.com.dionataferraz.vendas.login.data.repository.LoginRepository
+import br.com.dionataferraz.vendas.model.LoginModel
 
 class GetLoginUsecase {
 
@@ -11,8 +12,7 @@ class GetLoginUsecase {
         LoginRepository()
     }
 
-    suspend fun login(email: String, password: String):
-            Result<UserModel, ErrorModel> {
-        return repository.login(password = password, email = email)
+    suspend fun login(loginModel: LoginModel): ResultModel<UserModel, ErrorModel> {
+        return repository.login(loginModel)
     }
 }

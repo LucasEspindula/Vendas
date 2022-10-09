@@ -1,6 +1,6 @@
-package br.com.dionataferraz.vendas.login.data.model
+package br.com.dionataferraz.vendas.model
 
-class UserModel(
+data class NewUserModel (
     val name: String,
     val email: String,
     val password: String

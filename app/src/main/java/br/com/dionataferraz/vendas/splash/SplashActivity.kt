@@ -4,8 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import br.com.dionataferraz.vendas.R
-import br.com.dionataferraz.vendas.databinding.ActivityLoginBinding
 import br.com.dionataferraz.vendas.databinding.ActivitySplashBinding
 import br.com.dionataferraz.vendas.home.HomeActivity
 import br.com.dionataferraz.vendas.login.LoginActivity
@@ -25,13 +23,15 @@ class SplashActivity : AppCompatActivity() {
         viewModel.verifyUserExists()
 
         Handler().postDelayed({
-            viewModel.splashLiveData.observe(this) { result ->
-                if (!result) {
-                    val intent  = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
+            viewModel.splashLiveData.observe(this) { ResultModel ->
+                if (!ResultModel) {
+                    Intent(this, HomeActivity::class.java).also {
+                        startActivity(it)
+                    }
                 } else {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
+                    Intent(this, LoginActivity::class.java).also {
+                        startActivity(it)
+                    }
                 }
             }
             finish()

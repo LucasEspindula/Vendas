@@ -14,8 +14,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import br.com.dionataferraz.vendas.home.HomeActivity
 import br.com.dionataferraz.vendas.profile.ProfileActivity
-import br.com.dionataferraz.vendas.database.VendasDatabase
 import br.com.dionataferraz.vendas.databinding.ActivityLoginBinding
+import br.com.dionataferraz.vendas.model.LoginModel
 
 class LoginActivity : AppCompatActivity() {
 
@@ -31,15 +31,19 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btLogin.setOnClickListener {
             viewModel.login(
-                binding.etEmail.text.toString(),
-                binding.etPassword.text.toString()
+                LoginModel(
+                    email = binding.etEmail.text.toString(),
+                    password = binding.etPassword.text.toString()
+                )
             )
         }
 
         viewModel.shouldShowHome.observe(this) { shouldOpen ->
             if (shouldOpen) {
-                val intent  = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+                Intent(this, HomeActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
             }
         }
 
@@ -75,8 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
         binding.btRegistro.makeLinks(
                 Pair("Registrar", View.OnClickListener {
-                    val intent = Intent(this, ProfileActivity::class.java)
-                    startActivity(intent)
+                    Intent(this, ProfileActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
                 }
             )
         )

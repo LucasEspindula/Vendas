@@ -1,10 +1,8 @@
 package br.com.dionataferraz.vendas.login.data.repository
 
 import br.com.dionataferraz.vendas.login.data.local.LoginLocalDataSource
-import br.com.dionataferraz.vendas.login.data.model.UserModel
-import br.com.dionataferraz.vendas.login.data.remote.ErrorModel
 import br.com.dionataferraz.vendas.login.data.remote.LoginRemoteDataSource
-import br.com.dionataferraz.vendas.login.data.remote.Result
+import br.com.dionataferraz.vendas.model.*
 
 class LoginRepository {
 
@@ -16,17 +14,24 @@ class LoginRepository {
         LoginLocalDataSource()
     }
 
-    suspend fun login(email: String, password: String): Result<UserModel, ErrorModel> {
-        val resultUser = dataSource.login(password = password, email = email)
-        if (resultUser is Result.Success) {
-            insertUserRepository(resultUser.value)
+    suspend fun login(loginModel: LoginModel): ResultModel<UserModel, ErrorModel> {
+        val resultModelUser = dataSource.login(
+            password = loginModel.password,
+            email = loginModel.email
+        )
+        if (resultModelUser is ResultModel.Success) {
+            insertUserRepository(resultModelUser.value)
         }
-        return resultUser
+        return resultModelUser
     }
 
     private suspend fun insertUserRepository(userModel: UserModel) {
         localdataSource.insertUserDataSource(
             userModel
         )
+    }
+
+    suspend fun fetchUser(): ResultModel<UserModel, NotFoundUser> {
+        return localdataSource.getUserDataSource()
     }
 }

@@ -1,23 +1,42 @@
 package br.com.dionataferraz.vendas.home
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.dionataferraz.vendas.balance.domain.usecase.BalanceUsecase
+import br.com.dionataferraz.vendas.balance.domain.usecase.TransactionUseCase
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    private val homeModel: MutableLiveData<String> = MutableLiveData()
-    val homeLiveData: MutableLiveData<String> = homeModel
+    private val homeName: MutableLiveData<String> = MutableLiveData()
+    val homeNameLiveData: LiveData<String> = homeName
+
+    private val homeBalance: MutableLiveData<String> = MutableLiveData()
+    val homeBalanceLiveData: MutableLiveData<String> = homeBalance
 
     private val usecase by lazy {
-        BalanceUsecase()
+        TransactionUseCase()
     }
 
-    fun attBalance() = viewModelScope.launch {
-        ("R$ " + usecase.fetchBalanceUseCase().formats(2)).also { homeModel.value = it }
+    fun attNameHome() = viewModelScope.launch {
+        homeName.value = "Olá, ${usecase.fetchUser()?.name.toString()}"
     }
 
-    private fun Double.formats(scale: Int) = "%.${scale}f".format(this)
+    fun attBalanceHome() = viewModelScope.launch {
+        var sumBalance = 0.0
+
+        homeBalance.value = "R$ $sumBalance"
+
+        val userId = usecase.fetchUserId()
+        if (userId != null) {
+            usecase.fetchTransactions(userId).get()?.map { value ->
+                sumBalance += value.value
+            }
+        }
+    }
+
+
+//    ("R$ " + usecase.fetchBalanceUseCase().formats(2)).also { homeModel.value = it }
+//    private fun Double.formats(scale: Int) = "%.${scale}f".format(this)
 }

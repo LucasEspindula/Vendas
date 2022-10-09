@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas.balance.data.local
+package br.com.dionataferraz.vendas.balance.data.converter
 
 import androidx.room.TypeConverter
 import java.util.*
@@ -12,5 +12,10 @@ class DateConverter {
     @TypeConverter
     fun dateToTimestamp(date: Date?): Long? {
         return date?.time
+    }
+
+    @TypeConverter
+    fun dateToTimestampp(date: Date?): String {
+        return date?.time.toString()
     }
 }

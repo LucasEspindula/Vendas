@@ -23,13 +23,17 @@
     <string name="account_responsible">Responsavel da conta</string>
     <string name="debit">Debito</string>
     <string name="credit">Credito</string>
-    <string name="value">Value</string>
+    <string name="value">Valor</string>
     <string name="icon">Icon</string>
-    <string name="description">Description</string>
+    <string name="description">Descrição</string>
     <string name="data_transações">Data da transação</string>
     <string name="home_new_transacoes">Nova Transação</string>
     <string name="add_saldo">Adicionar saldo</string>
     <string name="remover_saldo">Retirar saldo</string>
     <string name="valor">Value</string>
-    <string name="name_type_deposit">Nome tipo de deposito</string>
+    <string name="commerce">Comercio a receber</string>
+    <string name="market">Mercado</string>
+    <string name="gas_station">Posto de Gasolina</string>
+    <string name="pub">Bar</string>
+    <string name="save_transaction">Salvar transação</string>
 </resources>

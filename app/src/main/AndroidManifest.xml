@@ -17,10 +17,7 @@
         android:theme="@style/Theme.Vendas"
         tools:targetApi="31">
         <activity
-            android:name=".balance.data.local.BalanceActivity"
-            android:exported="false" />
-        <activity
-            android:name=".profile.TestingProfileActivity"
+            android:name=".balance.data.local.TransactionActivity"
             android:exported="false" />
         <activity
             android:name=".account.TestingAccountActivity"
@@ -33,7 +30,7 @@
             android:name=".home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".balance.TransactionsActivity"
+            android:name=".balance.TransactionsListActivity"
             android:exported="false" />
         <activity
             android:name=".profile.ProfileActivity"

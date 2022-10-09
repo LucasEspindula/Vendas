@@ -1,6 +1,5 @@
-package br.com.dionataferraz.vendas.login.data.remote
+package br.com.dionataferraz.vendas
 
-import br.com.dionataferraz.vendas.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient

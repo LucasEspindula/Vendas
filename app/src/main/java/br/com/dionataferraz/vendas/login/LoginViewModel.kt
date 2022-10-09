@@ -1,11 +1,11 @@
 package br.com.dionataferraz.vendas.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.dionataferraz.vendas.login.domain.usecase.GetLoginUsecase
+import br.com.dionataferraz.vendas.model.LoginModel
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
@@ -20,19 +20,16 @@ class LoginViewModel : ViewModel() {
     private val home: MutableLiveData<Boolean> = MutableLiveData(false)
     val shouldShowHome: LiveData<Boolean> = home
 
-    fun login(email: String?, password: String?) {
+    fun login(loginModel: LoginModel) {
         viewModelScope.launch {
-            if (email != null && password != null) {
-                val user = usecase.login(email = email, password = password)
-                Log.e("LoginViewModel :: user", user.get().toString())
+            if (loginModel != null) {
+                val user = usecase.login(loginModel)
 
                 if (user.get() != null) {
                     home.value = true
                 } else {
                     error.value = true
                 }
-
-                Log.e("LoginViewModel :::::", usecase.login(email = email, password = password).get().toString())
             } else {
                 error.value = true
             }
