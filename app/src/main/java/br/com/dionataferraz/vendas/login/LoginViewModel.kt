@@ -10,28 +10,22 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
 
+    private val home: MutableLiveData<Boolean> = MutableLiveData(false)
+    val shouldShowHome: LiveData<Boolean> = home
+
+    private val error: MutableLiveData<String> = MutableLiveData()
+    val shouldShowError: LiveData<String> = error
+
     private val usecase by lazy {
         GetLoginUsecase()
     }
 
-    private val error: MutableLiveData<Boolean> = MutableLiveData(false)
-    val shouldShowError: LiveData<Boolean> = error
-
-    private val home: MutableLiveData<Boolean> = MutableLiveData(false)
-    val shouldShowHome: LiveData<Boolean> = home
-
     fun login(loginModel: LoginModel) {
         viewModelScope.launch {
-            if (loginModel != null) {
-                val user = usecase.login(loginModel)
-
-                if (user.get() != null) {
-                    home.value = true
-                } else {
-                    error.value = true
-                }
+            if (usecase.login(loginModel).get() != null) {
+                home.value = true
             } else {
-                error.value = true
+                error.value = "Invalid email or password."
             }
         }
     }

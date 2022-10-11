@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.dionataferraz.vendas.R
 import br.com.dionataferraz.vendas.databinding.ActivityProfileBinding
 import br.com.dionataferraz.vendas.login.LoginActivity
-import br.com.dionataferraz.vendas.model.UserModel
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
@@ -30,11 +29,9 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.btSave.setOnClickListener {
             viewModel.createPerson(
-                UserModel(
-                    name = binding.etName.text.toString(),
-                    email = binding.etEmail.text.toString(),
-                    password = binding.etPassword.text.toString()
-                )
+                name = binding.etName.text.toString(),
+                email = binding.etEmail.text.toString(),
+                password = binding.etPassword.text.toString()
             )
         }
 
@@ -47,17 +44,11 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.shouldShowError.observe(this) { shouldShow ->
-            if (shouldShow != null) {
+        viewModel.shouldShowMessage.observe(this) { shouldShow ->
+            if (!shouldShow.isNullOrBlank()) {
                 Toast.makeText(
                     this,
                     shouldShow,
-                    Toast.LENGTH_LONG
-                ).show()
-            } else {
-                Toast.makeText(
-                    this,
-                    "Profile created successfully!",
                     Toast.LENGTH_LONG
                 ).show()
             }

@@ -13,11 +13,22 @@ class TransactionRemoteDataSource {
         .createNetworkClient()
         .create(TransactionApi::class.java)
 
+
+    suspend fun deleteTransaction(id: Int) {
+        return withContext(Dispatchers.IO) {
+            try {
+                service.delete(id.toString())
+            } catch (exception: Exception) {
+                ResultModel.Error(ErrorModel)
+            }
+        }
+    }
+
     suspend fun registerTransaction(idUser: Int, newTransactionModel: NewTransactionModel) {
         return withContext(Dispatchers.IO) {
             try {
                 service.register(idUser.toString(), newTransactionModel)
-            } catch (exception:Exception){
+            } catch (exception: Exception) {
                 ResultModel.Error(ErrorModel)
             }
         }
@@ -27,17 +38,7 @@ class TransactionRemoteDataSource {
         return withContext(Dispatchers.IO) {
             try {
                 ResultModel.Success(service.fetch(idUser.toString()))
-            } catch (exception:Exception){
-                ResultModel.Error(ErrorModel)
-            }
-        }
-    }
-
-    suspend fun deleteTransaction(id: Int) {
-        return withContext(Dispatchers.IO) {
-            try {
-                service.delete(id.toString())
-            } catch (exception:Exception){
+            } catch (exception: Exception) {
                 ResultModel.Error(ErrorModel)
             }
         }

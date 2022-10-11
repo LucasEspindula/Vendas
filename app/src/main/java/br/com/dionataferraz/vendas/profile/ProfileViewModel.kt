@@ -14,23 +14,30 @@ class ProfileViewModel : ViewModel() {
         ProfileUseCase()
     }
 
-    private val error: MutableLiveData<String> = MutableLiveData()
-    val shouldShowError: LiveData<String> = error
-
     private val userCreated: MutableLiveData<Boolean> = MutableLiveData(false)
     val userCreatedLiveData: LiveData<Boolean> = userCreated
 
-    fun createPerson(userModel: UserModel) {
+    private val message: MutableLiveData<String> = MutableLiveData()
+    val shouldShowMessage: LiveData<String> = message
+
+    fun createPerson(name: String, email: String, password: String) {
         viewModelScope.launch {
-            if (userModel.name.isBlank()) {
-                error.value = "The name field cannot be empty!"
-            } else if (userModel.email.isBlank()) {
-                error.value = "The email field cannot be empty!"
-            } else if (userModel.password.isBlank()) {
-                error.value = "The password field cannot be empty!"
+            if (name.isBlank()) {
+                message.value = "The name field cannot be empty!"
+            } else if (email.isBlank()) {
+                message.value = "The email field cannot be empty!"
+            } else if (password.isBlank()) {
+                message.value = "The password field cannot be empty!"
             } else {
-                usecase.registerProfile(userModel)
+                val newUser = UserModel(
+                    name = name,
+                    email = email,
+                    password = password
+                )
+
                 userCreated.value = true
+                usecase.registerProfile(newUser)
+                message.value = "Profile created successfully!"
             }
         }
     }

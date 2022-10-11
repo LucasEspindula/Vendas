@@ -1,8 +1,6 @@
 package br.com.dionataferraz.vendas.balance
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -33,24 +31,12 @@ class TransactionsListActivity : AppCompatActivity() {
                         id = it.id,
                         value = it.value,
                         description = it.description,
-//                        transactionDate = it.transactionDate,
                         transactionType = it.transactionType
                     )
                 }
 
-                Log.e(" LIST :::: ", transactionsMapper.toString())
                 binding.rcList.adapter = adapterTransaction
                 adapterTransaction.addList(transactionsMapper)
-            }
-        }
-
-        viewModel.shouldShowError.observe(this) { shouldShow ->
-            if (shouldShow != null) {
-                Toast.makeText(
-                    this,
-                    shouldShow,
-                    Toast.LENGTH_LONG
-                ).show()
             }
         }
 

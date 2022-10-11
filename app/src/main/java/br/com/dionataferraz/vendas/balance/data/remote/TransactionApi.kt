@@ -1,7 +1,6 @@
 package br.com.dionataferraz.vendas.balance.data.remote
 
 import br.com.dionataferraz.vendas.model.NewTransactionModel
-import br.com.dionataferraz.vendas.model.TransactionModel
 import retrofit2.http.*
 
 interface TransactionApi {

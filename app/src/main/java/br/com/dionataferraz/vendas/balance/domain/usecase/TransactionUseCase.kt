@@ -15,23 +15,19 @@ class TransactionUseCase {
         LoginRepository()
     }
 
-    suspend fun fetchUserId(): Int? {
-        return repositoryLogin.fetchUser().get()?.id
+    suspend fun deleteTransaction(id: Int) {
+        repository.deleteTransaction(id)
     }
 
     suspend fun fetchUser(): UserModel? {
         return repositoryLogin.fetchUser().get()
     }
 
-    suspend fun fetchTransactions(idUser: Int): ResultModel<List<TransactionResponse>, ErrorModel> {
-        return repository.fetchTransactions(idUser)
-    }
-
     suspend fun registerTransaction(idUser: Int, newTransactionModel: NewTransactionModel) {
         return repository.registerTransaction(idUser, newTransactionModel)
     }
 
-    suspend fun deleteTransaction(id: Int) {
-        repository.deleteTransaction(id)
+    suspend fun fetchTransactions(idUser: Int): ResultModel<List<TransactionResponse>, ErrorModel> {
+        return repository.fetchTransactions(idUser)
     }
 }

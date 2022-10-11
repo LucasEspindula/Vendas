@@ -14,6 +14,16 @@ class LoginRepository {
         LoginLocalDataSource()
     }
 
+    suspend fun fetchUser(): ResultModel<UserModel, NotFoundUser> {
+        return localdataSource.getUserDataSource()
+    }
+    
+    private suspend fun insertUserRepository(userModel: UserModel) {
+        localdataSource.insertUserDataSource(
+            userModel
+        )
+    }
+
     suspend fun login(loginModel: LoginModel): ResultModel<UserModel, ErrorModel> {
         val resultModelUser = dataSource.login(
             password = loginModel.password,
@@ -23,15 +33,5 @@ class LoginRepository {
             insertUserRepository(resultModelUser.value)
         }
         return resultModelUser
-    }
-
-    private suspend fun insertUserRepository(userModel: UserModel) {
-        localdataSource.insertUserDataSource(
-            userModel
-        )
-    }
-
-    suspend fun fetchUser(): ResultModel<UserModel, NotFoundUser> {
-        return localdataSource.getUserDataSource()
     }
 }

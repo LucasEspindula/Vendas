@@ -6,7 +6,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import br.com.dionataferraz.vendas.databinding.ActivityBalanceBinding
-import br.com.dionataferraz.vendas.model.NewTransactionModel
 
 class TransactionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBalanceBinding
@@ -29,17 +28,15 @@ class TransactionActivity : AppCompatActivity() {
             var setType = TransactionType.MARKET
 
             when (type) {
-                "Mercado" -> setType = TransactionType.MARKET
-                "Posto de Gasolina" -> setType = TransactionType.GAS_STATION
-                "Bar" -> setType = TransactionType.PUB
+                "Market" -> setType = TransactionType.MARKET
+                "Gas station" -> setType = TransactionType.GAS_STATION
+                "Pub" -> setType = TransactionType.PUB
             }
 
             viewModel.createTransaction(
-                NewTransactionModel(
-                    value = binding.etValue.text.toString().toDouble(),
-                    description = binding.etDescription.text.toString(),
-                    transactionType = setType
-                )
+                value = binding.etValue.text.toString(),
+                description = binding.etDescription.text.toString(),
+                type = setType
             )
         }
 

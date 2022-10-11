@@ -3,7 +3,7 @@ package br.com.dionataferraz.vendas.home
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.dionataferraz.vendas.account.AccountActivity
+import android.util.Log
 import br.com.dionataferraz.vendas.balance.TransactionsListActivity
 import br.com.dionataferraz.vendas.balance.data.local.TransactionActivity
 import br.com.dionataferraz.vendas.databinding.ActivityHomeBinding
@@ -15,14 +15,19 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
         viewModel = HomeViewModel()
 
+        binding = ActivityHomeBinding.inflate(layoutInflater).apply {
+            data = viewModel
+        }
+
+        setContentView(binding.root)
+
         viewModel.attNameHome()
         viewModel.homeNameLiveData.observe(this) { attNameHome ->
-             binding.tvNameAccount.text = attNameHome
+//             binding.tvNameAccount.text = attNameHome
+            Log.e(" ::::::::::: ", attNameHome)
         }
 
         viewModel.attBalanceHome()
@@ -30,13 +35,7 @@ class HomeActivity : AppCompatActivity() {
             binding.tvAccountBalance.text = attBalanceHome
         }
 
-        binding.btNovaConta.setOnClickListener {
-            Intent(this, AccountActivity::class.java).also {
-                startActivity(it)
-            }
-        }
-
-        binding.btListaTransacoes.setOnClickListener {
+        binding.btNewTransacoes.setOnClickListener {
             Intent(this, TransactionActivity::class.java).also {
                 startActivity(it)
             }

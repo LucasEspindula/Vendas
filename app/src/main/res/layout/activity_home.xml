@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewmodel"
+            type="br.com.dionataferraz.vendas.home.HomeViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +41,7 @@
             android:textSize="@dimen/text_size_18"
             app:layout_constraintBottom_toBottomOf="@+id/v_header"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="@string/home_hello" />
+            android:text="@{viewmodel.homeNameLiveData}" />
 
         <TextView
             android:id="@+id/tv_account_balance"
@@ -106,29 +112,17 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_credit_card_place_holder" />
 
         <Button
-            android:id="@+id/bt_nova_conta"
+            android:id="@+id/bt_new_transacoes"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/purple_700"
-            android:text="@string/home_new_account"
-            android:textAllCaps="false"
-            android:textSize="@dimen/text_size_14"
-            app:layout_constraintStart_toStartOf="@+id/tv_account_place_holder"
-            app:layout_constraintTop_toBottomOf="@+id/tv_account_place_holder"/>
-
-        <Button
-            android:id="@+id/bt_lista_transacoes"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
+            android:layout_margin="40dp"
             android:background="@color/white"
             android:text="@string/home_new_transacoes"
             android:textAllCaps="false"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintStart_toStartOf="@+id/bt_nova_conta"
-            app:layout_constraintEnd_toEndOf="@+id/bt_nova_conta"
-            app:layout_constraintTop_toBottomOf="@+id/bt_nova_conta" />
+            app:layout_constraintEnd_toEndOf="@+id/tv_account_place_holder"
+            app:layout_constraintStart_toStartOf="@+id/tv_account_place_holder"
+            app:layout_constraintTop_toBottomOf="@+id/tv_account_place_holder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

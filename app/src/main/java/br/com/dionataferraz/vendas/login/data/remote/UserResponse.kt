@@ -1,4 +1,4 @@
-package br.com.dionataferraz.vendas.login.data.response
+package br.com.dionataferraz.vendas.login.data.remote
 
 data class UserResponse (
     val id: Int,

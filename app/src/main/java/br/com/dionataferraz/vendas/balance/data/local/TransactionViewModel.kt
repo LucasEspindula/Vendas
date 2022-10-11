@@ -10,23 +10,29 @@ import kotlinx.coroutines.launch
 
 class TransactionViewModel : ViewModel() {
 
+    private val error: MutableLiveData<String> = MutableLiveData()
+    val shouldShowError: LiveData<String> = error
+
     private val usecase by lazy {
         TransactionUseCase()
     }
 
-    private val error: MutableLiveData<String> = MutableLiveData()
-    val shouldShowError: LiveData<String> = error
-
-    fun createTransaction(newTransactionModel: NewTransactionModel) {
+    fun createTransaction(value: String, description: String, type: TransactionType) {
         viewModelScope.launch {
             when {
-                newTransactionModel.value.isNaN() -> error.value = "The value field cannot be empty!"
-                newTransactionModel.description.isBlank() -> error.value = "The description field cannot be empty!"
+                value.isBlank() -> error.value = "The value field cannot be empty!"
+                description.isBlank() -> error.value = "The description field cannot be empty!"
 
                 else -> {
-                    val userId = usecase.fetchUserId()
+                    val newTransaction = NewTransactionModel(
+                        value = value.toDouble(),
+                        description = description,
+                        transactionType = type
+                    )
+
+                    val userId = usecase.fetchUser()?.id
                     if (userId != null) {
-                        usecase.registerTransaction(userId, newTransactionModel)
+                        usecase.registerTransaction(userId, newTransaction)
                     }
                 }
             }

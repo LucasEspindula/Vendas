@@ -4,8 +4,7 @@ import br.com.dionataferraz.vendas.balance.data.local.TransactionType
 
 data class TransactionResponse(
     val id: Int,
-//    val transactionDate: String,
-    var value: Double,
+    val value: Double,
     val description: String,
     val transactionType: TransactionType,
 )

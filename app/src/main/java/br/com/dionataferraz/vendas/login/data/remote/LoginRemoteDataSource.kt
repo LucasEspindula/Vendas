@@ -1,7 +1,6 @@
 package br.com.dionataferraz.vendas.login.data.remote
 
 import br.com.dionataferraz.vendas.RetrofitNetworkClient
-import br.com.dionataferraz.vendas.login.data.response.UserResponse
 import br.com.dionataferraz.vendas.model.ErrorModel
 import br.com.dionataferraz.vendas.model.ResultModel
 import br.com.dionataferraz.vendas.model.UserModel
@@ -17,8 +16,8 @@ class LoginRemoteDataSource {
     suspend fun login(email: String, password: String): ResultModel<UserModel, ErrorModel> {
         return withContext(Dispatchers.IO) {
             try {
-                val tt = service.login(email, password)
-                ResultModel.Success(tt.mapResponseToModel())
+                val mapForService = service.login(email, password)
+                ResultModel.Success(mapForService.mapResponseToModel())
             } catch (exception: Exception) {
                 ResultModel.Error(ErrorModel)
             }

@@ -48,10 +48,10 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.shouldShowError.observe(this) { shouldShow ->
-            if (shouldShow) {
+            if (shouldShow != null) {
                 Toast.makeText(
                     this,
-                    "Deu ruim",
+                    shouldShow,
                     Toast.LENGTH_LONG
                 ).show()
             }

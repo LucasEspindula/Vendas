@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
 
-    private val homeName: MutableLiveData<String> = MutableLiveData()
+    val homeName: MutableLiveData<String> = MutableLiveData()
     val homeNameLiveData: LiveData<String> = homeName
 
     private val homeBalance: MutableLiveData<String> = MutableLiveData()
@@ -20,23 +20,20 @@ class HomeViewModel : ViewModel() {
     }
 
     fun attNameHome() = viewModelScope.launch {
-        homeName.value = "Olá, ${usecase.fetchUser()?.name.toString()}"
+        homeName.value = "Hello, ${usecase.fetchUser()?.name.toString()}"
     }
 
     fun attBalanceHome() = viewModelScope.launch {
         var sumBalance = 0.0
 
-        homeBalance.value = "R$ $sumBalance"
-
-        val userId = usecase.fetchUserId()
+        val userId = usecase.fetchUser()?.id
         if (userId != null) {
             usecase.fetchTransactions(userId).get()?.map { value ->
                 sumBalance += value.value
             }
         }
+        homeBalance.value = "R$ ${2.formatsNew(sumBalance)}"
     }
 
-
-//    ("R$ " + usecase.fetchBalanceUseCase().formats(2)).also { homeModel.value = it }
-//    private fun Double.formats(scale: Int) = "%.${scale}f".format(this)
+    private fun Int.formatsNew(input: Double) = String.format("%.${this}f", input)
 }
