@@ -20,7 +20,7 @@ class HomeViewModel : ViewModel() {
     }
 
     fun attNameHome() = viewModelScope.launch {
-        homeName.value = "Hello, ${usecase.fetchUser()?.name.toString()}"
+        homeName.value = "Olá, ${usecase.fetchUser()?.name.toString()}"
     }
 
     fun attBalanceHome() = viewModelScope.launch {
